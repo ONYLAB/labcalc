@@ -5,7 +5,7 @@
 <style type="text/css">
 /*number inputs*/
 input[type="number"] {
-width:50px; height:30px; 
+min-width:50px; height:30px; 
 text-align:center; 
 margin:3px; 
 float:left;}
@@ -49,48 +49,156 @@ function updateOutput() {
 		case 1: out.value = num1-num2;
 		break;
 		//multiply
-		case 2: out.value = num1*num2;
+		case 2: out.value = Math.pow((6.0*num1*Math.pow(Math.PI,0.5)),1.0/3.0).toFixed(7);//only one digit after decimal place this is L
 		break;
 		//divide
-		case 3: out.value = (num1/num2).toFixed(1);//only one digit after decimal place
+		case 3: out.value = (Math.pow((6.0*num1*Math.pow(Math.PI,0.5)),1.0/3.0)/6/Math.pow(Math.PI,0.5)).toFixed(7); //Lz
 		break;
 		default:
 	  	break;
 	}
 }
 
+function updateLZLOutput() { 
+		//get form
+	var form = document.getElementById("calcLZL");
+		//get output
+	var out1 = form.elements["Lz"];
+	var out2 = form.elements["L"];
+
+	var num1 = parseFloat(form.elements["V"].value);
+	
+	out2.value = Math.pow((6.0*num1*Math.pow(Math.PI,0.5)),1.0/3.0).toFixed(7);//only one digit after decimal place this is L
+	out1.value = (Math.pow((6.0*num1*Math.pow(Math.PI,0.5)),1.0/3.0)/6/Math.pow(Math.PI,0.5)).toFixed(7); //Lz
+}
+
+function updateconcnmOutput() { 
+		//get form
+	var form = document.getElementById("calcconcnm");
+		//get output
+	var out1 = form.elements["Concnm"];
+	var num1 = parseFloat(form.elements["Conc"].value);	
+	out1.value = (num1*602.214).toFixed(7); //Lz
+}
+
+function updaterateOutput() { 
+		//get form
+	var form = document.getElementById("calcrate");
+		//get output
+	var out1 = form.elements["onratenm"];
+	var num1 = parseFloat(form.elements["onrate"].value);	
+	out1.value = (num1*0.000001660577881102624).toFixed(7); //Lz
+}
+
+function updateDDrateOutput() { 
+		//get form
+	var form = document.getElementById("calcDDrate");
+		//get output
+	var out1 = form.elements["onrateDDnm"];
+	var num1 = parseFloat(form.elements["onrate"].value);	
+	var num2 = parseFloat(form.elements["sigma"].value);	
+	out1.value = (num1*0.000001660577881102624/num2/2.0).toFixed(7); //Lz
+}
+
+function updateparticlesOutput() { 
+		//get form
+	var form = document.getElementById("calcparticles");
+		//get output
+	var out1 = form.elements["particles"];
+	var num1 = parseFloat(form.elements["concentration"].value);	
+	var num2 = parseFloat(form.elements["volume"].value);	
+	out1.value = (num1*602.214*num2).toFixed(7);
+}
+
 </script>
 </head>
 <body>
 
-<p>This is a demo to accompany the following tutorial: <a href="http://www.developerdrive.com/2012/06/creating-a-web-page-calculator-using-the-html5-output-element/">Creating A Web Page Calculator Using The HTML5 Output Element</a></p>
-
-<form id="calc" oninput="updateOutput()">
-<input name="x" type="number" value="0" />
-<select name="op" onchange="updateOutput()">
-  <option value="0">+</option>
-  <option value="1">-</option>
-  <option value="2">&times;</option>
-  <option value="3">&divide;</option>
-</select> 
-<input name="y" type="number" value="0" />
-<div class="equals"> = </div>
-<output name="z" for="x y">0</output>
+<h3>VOLUMETRIC CONVERSIONS FOR A CUBOID BOX THAT REPRESENTS A SPHERICAL DOMAIN </h3>
+<form id="calcLZL" oninput="updateLZLOutput()">
+Given Volume:
+<br>
+<input name="V" type="number" value="0" /> <br>um<sup>3</sup>
+<br>
+<br>
+L=
+<br>
+<output name="L" for="V">0</output> <br>um
+<br>
+<br>
+Lz=
+<br>
+<output name="Lz" for="V">0</output> <br>um
 </form> 
+<br>
 
-
-<form id="calc2" oninput="updateOutput()">
-<input name="x" type="number" value="0" />
-<select name="op" onchange="updateOutput()">
-  <option value="0">+</option>
-  <option value="1">-</option>
-  <option value="2">&times;</option>
-  <option value="3">&divide;</option>
-</select> 
-<input name="y" type="number" value="0" />
-<div class="equals"> = </div>
-<output name="z" for="x y">0</output>
+<hr>
+<h3>MOLAR CONCENTRATION CONVERSION</h3>
+<form id="calcconcnm" oninput="updateconcnmOutput()">
+Given Concentration:
+<br>
+<input name="Conc" type="number" value="0" /> <br>uM
+<br>
+<br>
+Concentration=
+<br>
+<output name="Concnm" for="Conc">0</output> um<sup>-3</sup>
 </form> 
+<br>
+<br>
+<hr>
+<h3>REACTION RATE CONVERSION</h3>
+<form id="calcrate" oninput="updaterateOutput()">
+Given Reaction On-Rate:
+<br>
+<input name="onrate" type="number" value="0" /> <br>M<sup>-1</sup> s<sup>-1</sup>
+<br>
+<br>
+On-Rate=
+<br>
+<output name="onratenm" for="onrate">0</output> nm<sup>3</sup> us<sup>-1</sup>
+</form> 
+<br>
+<br>
+<hr>
+<h3>2D REACTION RATE CONVERSION</h3>
+<form id="calcDDrate" oninput="updateDDrateOutput()">
+Given Reaction On-Rate:
+<br>
+<input name="onrate" type="number" value="0" /> <br>M<sup>-1</sup> s<sup>-1</sup>
+<br>
+<br>
+Sigma, reaction length scale:
+<br>
+<input name="sigma" type="number" value="0" /> <br> nm
+<br>
+<br>
+2D On-Rate=
+<br>
+<output name="onrateDDnm" for="onrate sigma">0</output> nm<sup>2</sup> us<sup>-1</sup>
+</form> 
+<br>
+<br>
+<hr>
+<h3>FINDING #PARTICLES GIVEN CONCENTRATION</h3>
+<form id="calcparticles" oninput="updateparticlesOutput()">
+Given Concentration:
+<br>
+<input name="concentration" type="number" value="0" /> <br>uM 
+<br>
+<br>
+Volume:
+<br>
+<input name="volume" type="number" value="0" /> <br>um<sup>3</sup>
+<br>
+<br>
+#Particles=
+<br>
+<output name="particles" for="concentration volume">0</output>
+</form> 
+<br>
+<br>
+<hr>
 
 </body>
 </html>
