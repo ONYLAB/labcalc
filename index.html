@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Developer Drive | Creating A Web Page Calculator Using The HTML5 Output Element | Demo</title>
-<style type="text/css">
+  <title>Developer Drive | Creating A Web Page Calculator Using The
+HTML5 Output Element | Demo</title>
+  <style type="text/css">
 /*number inputs*/
 input[type="number"] {
 min-width:50px; height:30px; 
@@ -26,8 +27,8 @@ text-align:center;
 background:#000000; 
 color:#ffffff; 
 float:left; }
-</style>
-<script type="text/javascript">
+  </style>
+  <script type="text/javascript">
 function updateOutput() { 
 		//get form
 	var form = document.getElementById("calc");
@@ -110,95 +111,107 @@ function updateparticlesOutput() {
 	out1.value = (num1*602.214*num2).toFixed(7);
 }
 
-</script>
+  </script>
 </head>
 <body>
-
-<h3>VOLUMETRIC CONVERSIONS FOR A CUBOID BOX THAT REPRESENTS A SPHERICAL DOMAIN </h3>
+<big><big>The Converter</big></big><br>
+<hr>
+<hr>
+<ol>
+  <li>
+    <h3><a href="#volcon">VOLUMETRIC CONVERSIONS FOR A CUBOID BOX THAT
+REPRESENTS A
+SPHERICAL
+DOMAIN</a></h3>
+  </li>
+  <li>
+    <h3><a href="#molcon">MOLAR CONCENTRATION CONVERSION</a></h3>
+  </li>
+  <li>
+    <h3><a href="#ratecon">REACTION RATE CONVERSION</a></h3>
+  </li>
+  <li>
+    <h3><a href="#ddratecon">2D REACTION RATE CONVERSION</a></h3>
+  </li>
+  <li>
+    <h3><a href="#partcon">FINDING #PARTICLES GIVEN CONCENTRATION</a></h3>
+  </li>
+</ol>
+<hr>
+<hr>
+<h3>VOLUMETRIC CONVERSIONS FOR A CUBOID BOX THAT REPRESENTS A SPHERICAL
+DOMAIN<a name="volcon"></a> </h3>
 <form id="calcLZL" oninput="updateLZLOutput()">
-Given Volume:
+Given Volume: <br>
+  <input name="V" value="0" type="number"> <br>
+um<sup>3</sup> <br>
+  <br>
+L= <br>
+  <output name="L" for="V">0</output> <br>
+um <br>
+  <br>
+Lz= <br>
+  <output name="Lz" for="V">0</output> <br>
+um
+</form>
 <br>
-<input name="V" type="number" value="0" /> <br>um<sup>3</sup>
-<br>
-<br>
-L=
-<br>
-<output name="L" for="V">0</output> <br>um
-<br>
-<br>
-Lz=
-<br>
-<output name="Lz" for="V">0</output> <br>um
-</form> 
-<br>
-
 <hr>
-<h3>MOLAR CONCENTRATION CONVERSION</h3>
+<h3>MOLAR CONCENTRATION CONVERSION<a name="molcon"></a></h3>
 <form id="calcconcnm" oninput="updateconcnmOutput()">
-Given Concentration:
-<br>
-<input name="Conc" type="number" value="0" /> <br>uM
-<br>
-<br>
-Concentration=
-<br>
-<output name="Concnm" for="Conc">0</output> um<sup>-3</sup>
-</form> 
+Given Concentration: <br>
+  <input name="Conc" value="0" type="number"> <br>
+uM <br>
+  <br>
+Concentration= <br>
+  <output name="Concnm" for="Conc">0</output> um<sup>-3</sup>
+</form>
 <br>
 <br>
 <hr>
-<h3>REACTION RATE CONVERSION</h3>
+<h3>REACTION RATE CONVERSION<a name="ratecon"></a></h3>
 <form id="calcrate" oninput="updaterateOutput()">
-Given Reaction On-Rate:
-<br>
-<input name="onrate" type="number" value="0" /> <br>M<sup>-1</sup> s<sup>-1</sup>
-<br>
-<br>
-On-Rate=
-<br>
-<output name="onratenm" for="onrate">0</output> nm<sup>3</sup> us<sup>-1</sup>
-</form> 
+Given Reaction On-Rate: <br>
+  <input name="onrate" value="0" type="number"> <br>
+M<sup>-1</sup> s<sup>-1</sup> <br>
+  <br>
+On-Rate= <br>
+  <output name="onratenm" for="onrate">0</output> nm<sup>3</sup> us<sup>-1</sup>
+</form>
 <br>
 <br>
 <hr>
-<h3>2D REACTION RATE CONVERSION</h3>
+<h3>2D REACTION RATE CONVERSION<a name="ddratecon"></a></h3>
 <form id="calcDDrate" oninput="updateDDrateOutput()">
-Given Reaction On-Rate:
-<br>
-<input name="onrate" type="number" value="0" /> <br>M<sup>-1</sup> s<sup>-1</sup>
-<br>
-<br>
-Sigma, reaction length scale:
-<br>
-<input name="sigma" type="number" value="0" /> <br> nm
-<br>
-<br>
-2D On-Rate=
-<br>
-<output name="onrateDDnm" for="onrate sigma">0</output> nm<sup>2</sup> us<sup>-1</sup>
-</form> 
+Given Reaction On-Rate: <br>
+  <input name="onrate" value="0" type="number"> <br>
+M<sup>-1</sup> s<sup>-1</sup> <br>
+  <br>
+Sigma, reaction length scale: <br>
+  <input name="sigma" value="0" type="number"> <br>
+nm <br>
+  <br>
+2D On-Rate= <br>
+  <output name="onrateDDnm" for="onrate sigma">0</output> nm<sup>2</sup>
+us<sup>-1</sup>
+</form>
 <br>
 <br>
 <hr>
-<h3>FINDING #PARTICLES GIVEN CONCENTRATION</h3>
+<h3>FINDING #PARTICLES GIVEN CONCENTRATION<a name="partcon"></a></h3>
 <form id="calcparticles" oninput="updateparticlesOutput()">
-Given Concentration:
-<br>
-<input name="concentration" type="number" value="0" /> <br>uM 
-<br>
-<br>
-Volume:
-<br>
-<input name="volume" type="number" value="0" /> <br>um<sup>3</sup>
-<br>
-<br>
-#Particles=
-<br>
-<output name="particles" for="concentration volume">0</output>
-</form> 
+Given Concentration: <br>
+  <input name="concentration" value="0" type="number"> <br>
+uM <br>
+  <br>
+Volume: <br>
+  <input name="volume" value="0" type="number"> <br>
+um<sup>3</sup> <br>
+  <br>
+#Particles= <br>
+  <output name="particles" for="concentration volume">0</output>
+</form>
 <br>
 <br>
 <hr>
-
 </body>
 </html>
